@@ -64,16 +64,16 @@ DB_HOST=db
 DB_PORT=5432
 ```
 
-Далее следует запустить docker-compose. В фоновом режиме будут созданы и запущены необходимые для работы приложения контейнеры (`infra-db-1`, `infra-web-1`, `infra-nginx-1`): 
+Далее следует запустить docker-compose. В фоновом режиме будут созданы и запущены необходимые для работы приложения контейнеры (`db`, `web`, `nginx`): 
 ```
 docker-compose up -d
 ```
 
-Затем нужно внутри контейнера `infra-web-1` выполнить миграции, создать суперпользователя и собрать статику:
+Затем нужно внутри контейнера `web` выполнить миграции, создать суперпользователя и собрать статику:
 ```
-docker-compose exec infra-web-1 python manage.py migrate
-docker-compose exec infra-web-1 python manage.py createsuperuser
-docker-compose exec infra-web-1 python manage.py collectstatic --no-input 
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser
+docker-compose exec web python manage.py collectstatic --no-input 
 ```
 После этого проект станет доступен по адресу http://localhost/. 
 
