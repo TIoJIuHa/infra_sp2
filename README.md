@@ -87,8 +87,3 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 docker-compose exec infra-web python manage.py dumpdata > fixtures.json 
 ```
-
-Для остановки работы приложения можно нажать Ctr + C. Запустить контейнеры без их повторного создания можно командой:
-```
-docker-compose start 
-```
